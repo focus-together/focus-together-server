@@ -1,0 +1,115 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Focus Together API",
+    "version": "1.0.0",
+    "description": "API documentation for the Focus Together project"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "bearerAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter JWT Bearer token **_only_**"
+    }
+  },
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "새로운 사용자 등록",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "user_name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "사용자 이름"
+          },
+          {
+            "name": "user_email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "사용자 이메일"
+          },
+          {
+            "name": "user_password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "사용자 비밀번호"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "생성된 사용자",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "사용자 로그인",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "user_email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "사용자 이메일"
+          },
+          {
+            "name": "user_password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": "사용자 비밀번호"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "로그인된 사용자",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+},
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

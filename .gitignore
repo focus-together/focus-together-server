@@ -1,0 +1,8 @@
+# 라이브러리
+node_modules
+# 환경 변수
+.env
+.history
+# 인증서 및 키 파일
+config/*.crt
+config/*.key
